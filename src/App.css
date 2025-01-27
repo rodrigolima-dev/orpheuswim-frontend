@@ -1,0 +1,156 @@
+header {
+    width: 100%;
+    background-color: #fd438e;
+}
+
+main {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px 80px 0px 80px;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 80px;
+    color: white;
+}
+
+.header-content .call {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.header-content .location {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.search-menu {
+    list-style: none;
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+    font-size: 15px;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.menu-item img {
+    width: 200px; 
+    height: auto; 
+    
+}
+
+.menu-item .categories-btn {
+    border: none;
+    background: none;
+    display: flex;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.categories-list {
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    list-style: none;
+    position: absolute;
+    z-index: 100;
+}
+
+.categories-list li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.categories-list li:hover {
+    background-color: #ececec;
+}
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    gap: 40px; 
+}
+
+.icon {
+    font-size: 25px;
+    color: #555;
+}
+
+
+.main-container {
+    width: 1200px;
+    height: auto;
+    margin-top: 40px;
+}
+
+.main-container .main-image {
+    width: 100%;
+    height: auto;
+
+    position: relative;
+    border-radius: 5px;
+}
+
+.main-container .slogan {
+    position: absolute;
+    z-index: 1;
+
+    top: 35%;
+    left: 15%;
+
+    max-width: 500px;
+}
+
+.main-container .slogan h1 {
+    font-size: 38px;
+    line-height: 40px;
+    color: #fd438e;
+}
+
+.main-container .slogan span {
+    font-weight: normal;
+    font-style: italic;
+    color: white;
+}
+
+.main-container .slogan button {
+    width: 200px;
+    height: 40px;
+    margin-top: 20px;
+    border: none;
+    border-radius: 40px;
+    background-color: #555;
+    cursor: pointer;
+    transition: 1s;
+}
+
+.main-container .slogan button:hover {
+    transform: scale(1.05);
+    background-color: #fd438e;
+}
+
+.main-container .slogan button p {
+    color: white;
+}
+
+
+
+/* d6ccb6 */
