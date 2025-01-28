@@ -102,8 +102,55 @@ function App() {
           <img src="./images/header-photo.png" alt="Menina com bikini de crochê azul na praia" className="main-image"/>
         </div>
 
-        <div>
-          <h1>teste</h1>
+        <div className="news-container">
+          <div className="news-text-container">
+              <h1>NOVAS COLEÇÕES</h1>
+              <p>Peças exclusivas e cheias de charme para deixar seu verão ainda mais especial.</p>
+          </div>
+
+          <div className="news-elements">
+            <div className="element">
+              <img src="./images/pecas/peca_01.png" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo.</p>
+              <span>R$00,00</span>
+            </div>
+
+            <div className="element">
+              <img src="./images/pecas/peca_02.jpg" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo.</p>
+              <span>R$00,00</span>
+            </div>
+
+            <div className="element">
+              <img src="./images/pecas/peca_03.jpg" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo.</p>
+              <span>R$00,00</span>
+            </div>
+
+            <div className="element">
+              <img src="./images/pecas/peca_04.jpg" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo.</p>
+              <span>R$00,00</span>
+            </div>
+
+            <div className="element">
+              <img src="./images/pecas/peca_05.jpg" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo.</p>
+              <span>R$00,00</span>
+            </div>
+
+            <div className="element">
+              <img src="./images/pecas/peca_06.jpg" alt="" className="element-image"/>
+              <h1>Testando título</h1>
+              <p>testando container do parágrafo</p>
+              <span>R$00,00</span>
+            </div>
+          </div>
         </div>
       </main>
     </div>
