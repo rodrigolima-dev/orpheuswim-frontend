@@ -1,0 +1,27 @@
+.header-content {
+    width: 100vw;
+    height: 3.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 5rem;
+
+    color: white;
+    background-color: #fd438e;
+}
+
+.header-content h3 {
+    font-size: 0.8rem;
+    font-weight: normal;
+}
+
+.header-content .call {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.header-content .location {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}

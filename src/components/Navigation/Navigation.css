@@ -1,0 +1,48 @@
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+
+.search-menu {
+    list-style: none;
+    display: flex;
+    align-items: center; 
+    gap: 15px; 
+    font-size: 15px;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.menu-item img {
+    width: 200px; 
+    height: auto; 
+    
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: #555;
+    transition: 0.5s;
+}
+
+.menu-item a:hover {
+    color: #fd438e;
+    text-decoration: underline;
+}
+
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    gap: 30px; 
+}
+
+.icon {
+    font-size: 25px;
+    color: #555;
+}

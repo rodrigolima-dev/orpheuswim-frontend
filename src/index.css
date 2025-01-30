@@ -5,16 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px; 
+}
+
 .home {
     width: 100%;
-}
-
-h3 {
-    font-size: 14px;
-    font-weight: 500;
-    color: white;
-}
-
-p {
-    color: #333333;
 }
