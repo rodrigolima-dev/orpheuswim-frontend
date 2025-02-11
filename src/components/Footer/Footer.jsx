@@ -11,19 +11,16 @@ export default function Footer() {
       </div>
 
 
-      <div className="contact-container">
-        <div className="contact">
-          <a href="https://wa.me/5521983103439" target="_blank">
-            <FaWhatsapp className="contact-icon" />
-          </a>
 
-          <a href="https://www.instagram.com/orpheuswim/" target="_blank">
-            <FaInstagram className="contact-icon" />
-          </a>
-        </div>
+      <div className="contact">
+        <a href="https://wa.me/5521983103439" target="_blank">
+          <FaWhatsapp className="contact-icon" />
+        </a>
+
+        <a href="https://www.instagram.com/orpheuswim/" target="_blank">
+          <FaInstagram className="contact-icon" />
+        </a>
       </div>
-      
-
 
 
     </footer>

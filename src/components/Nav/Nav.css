@@ -1,0 +1,159 @@
+.search-container {
+  position: absolute; /* ou fixed, dependendo do comportamento desejado */
+  top: 30px;
+  left: 0;
+  width: 100%;
+  z-index: 1; /* Garante que o header fique sobre o vídeo */
+
+  transition: .3s;
+}
+
+.search-container:hover {
+  background-color: white;
+
+}
+
+.search-container:hover .menu-item a {
+  color: #555;
+}
+.search-container:hover .menu-item a:hover {
+  color: #fd438e;
+  text-decoration: underline;
+}
+
+.search-container:hover .icon {
+  color: #555;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 2rem;
+}
+
+
+
+.search-menu {
+    list-style: none;
+    display: flex;
+    align-items: center; 
+    gap: .9rem; 
+    font-size: .9rem;
+}
+
+.menu-item {
+    cursor: pointer;
+}
+
+.menu-item img {
+    width: 15.6rem; 
+    height: auto; 
+    
+}
+
+.menu-item a {
+    text-decoration: none;
+    color: white;
+}
+
+
+
+
+.icons-container {
+    display: flex;
+    align-items: center;
+    gap: 2rem; 
+}
+
+.icon {
+    font-size: 1.5rem;
+    color: white;
+}
+
+.search-container-small {
+    display: none; 
+
+    width: 100%;
+  }
+  
+  .hamburger-menu {
+    position: relative;
+  }
+  
+  .hamburger-icon {
+    font-size: 2rem;
+    color: #555;
+    cursor: pointer;
+  }
+  
+  .navbar {
+    position: absolute;
+    top: 100%; 
+    right: -5rem; 
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    z-index: 1000; 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+
+  details[open] .navbar {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  details > summary {
+    list-style: none; 
+  }
+  
+  details > summary::-webkit-details-marker {
+    display: none; 
+  }
+
+  .navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .navbar ul li {
+    margin: 10px 0;
+  }
+  
+  .navbar ul li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 16px;
+  }
+
+
+@media (max-width: 1000px) {
+  .search-container {
+    top: 23px;
+
+  }
+
+    .search-menu {
+        display: none; 
+    }
+
+    .search-container-small {
+        display: flex; 
+    }
+
+    .icons-container {
+        display: flex;
+        align-items: center;
+        gap: 2rem; 
+    }
+
+    .icon {
+        font-size: 2rem;
+        color: white;
+    }
+}

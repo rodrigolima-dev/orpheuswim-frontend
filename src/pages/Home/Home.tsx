@@ -1,10 +1,13 @@
 import React from "react";
 import './Home.css';
 import Header from "../../components/Header/Header";
-import Navigation from "../../components/Navigation/Navigation";
+import Nav from "../../components/Nav/Nav";
 import Card from "../../components/Card/Card";
 import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/swiper-bundle.css'; // Estilos do Swiper
+import { Navigation, Pagination } from 'swiper/modules';
 
 
 export default function Home () {
@@ -56,34 +59,51 @@ export default function Home () {
 
     return(
         <div className="home">
-          <Header />
+
+          <div className="main-video-container">
+            <video autoPlay loop muted className="main-video">
+              <source src="./images/main-video.mp4" type="video/mp4"/>
+              Seu navegador não suporta a tag de vídeo.
+            </video>
+          </div>
+
 
   
           <main>
-            <Navigation/>
-            <div className="main-container">
-              <div className="slogan">
-                <h1>Bikini Azul Oceano<br/><span>Leve como o verão, único como você.</span></h1>
-                <Button text={"Adquirir"}/>
-              </div>
-    
-              <img src="./images/header-photo.png" alt="Menina com bikini de crochê azul na praia" className="main-image"/>
+
+
+            
+              <div className="news-container">
+                <div className="news-text-container">
+                    <h1>NOVAS COLEÇÕES</h1>
+                    <p>Peças exclusivas e cheias de charme para deixar seu verão ainda mais especial.</p>
+                </div>
+      
+                <div className="news-elements">
+                  {
+                    products.map((product, index) => (
+                      <Card key={index} {...product} />
+                    ))
+                  }
+                </div>
+
+                <div className="news-carousel-container">
+                  <Swiper className="news-carousel"
+                  modules={[Navigation, Pagination]} 
+                  spaceBetween={10}
+                  slidesPerView={1}
+                  navigation
+                  pagination={{ clickable: true }}
+                  >
+                  {products.map((product, index) => (
+                    <SwiperSlide key={index}>
+                      <Card key={index} {...product} />
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+                </div>
             </div>
-    
-            <div className="news-container">
-              <div className="news-text-container">
-                  <h1>NOVAS COLEÇÕES</h1>
-                  <p>Peças exclusivas e cheias de charme para deixar seu verão ainda mais especial.</p>
-              </div>
-    
-              <div className="news-elements">
-                {
-                  products.map((product, index) => (
-                    <Card key={index} {...product} />
-                  ))
-                }
-              </div>
-            </div>
+
 
             <div className="orders-container">
                 <div className="orders-text">
@@ -93,8 +113,8 @@ export default function Home () {
                   <Button text={"Saiba mais"}/>
                 </div>
 
-                <div className="logo-large">
-                  <img src="./images/logo.png" alt="" />
+                <div className="image-large">
+                  <img src="./images/colagem.png" alt="" />
                 </div>
             </div>
 
