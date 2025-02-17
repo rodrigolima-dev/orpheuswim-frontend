@@ -22,9 +22,8 @@
   }
   
 
-  @media (max-width: 425px){
+  @media (max-width: 768px){
     .footer {
-      padding: .5rem 1rem;
-
+      padding: .5rem 1.2rem;
     }
   }

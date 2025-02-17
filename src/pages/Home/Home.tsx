@@ -1,13 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import './Home.css';
-import Header from "../../components/Header/Header";
-import Nav from "../../components/Nav/Nav";
 import Card from "../../components/Card/Card";
-import Button from "../../components/Button/Button";
 import Footer from "../../components/Footer/Footer";
 import { Swiper, SwiperSlide } from 'swiper/react';
-import 'swiper/swiper-bundle.css'; // Estilos do Swiper
+import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Home () {
@@ -55,6 +53,10 @@ export default function Home () {
         price: "R$85,00"
       }
     ];
+
+
+
+    const navigate = useNavigate();
     
 
     return(
@@ -67,12 +69,8 @@ export default function Home () {
             </video>
           </div>
 
-
   
           <main>
-
-
-            
               <div className="news-container">
                 <div className="news-text-container">
                     <h1>NOVAS COLEÇÕES</h1>
@@ -110,7 +108,11 @@ export default function Home () {
                   <h1>Sua ideia, nossa <span>arte.</span></h1>
                   <p>Criamos peças <span>exclusivas</span>, feitas <span>sob medida</span> para você brilhar em qualquer ocasião. Do dia a dia aos momentos especiais, damos vida à sua inspiração com estilo único e personalizado. Fale com a gente no WhatsApp e vamos transformar suas ideias em realidade!</p>
                   <p>Ainda não sabe medir?</p>
-                  <Button text={"Saiba mais"}/>
+                  <button onClick={() => {
+                    navigate("/measure")
+                    }}>
+                    Saiba mais
+                  </button>
                 </div>
 
                 <div className="image-large">
@@ -128,8 +130,6 @@ export default function Home () {
               </div>
             </div>
           </main>
-
-          <Footer/>
       </div>
     );
 }

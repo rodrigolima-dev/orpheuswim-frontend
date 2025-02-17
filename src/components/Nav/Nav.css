@@ -1,27 +1,46 @@
-.search-container {
-  position: absolute; /* ou fixed, dependendo do comportamento desejado */
+/* Navbar transparente apenas na Home */
+.transparent-nav {
+  position: absolute;
   top: 30px;
   left: 0;
   width: 100%;
-  z-index: 1; /* Garante que o header fique sobre o vídeo */
-
-  transition: .3s;
+  z-index: 1;
+  transition: 0.3s;
 }
 
-.search-container:hover {
+.transparent-nav:hover {
   background-color: white;
-
 }
 
-.search-container:hover .menu-item a {
+.transparent-nav:hover .menu-item a {
   color: #555;
 }
-.search-container:hover .menu-item a:hover {
+
+.transparent-nav:hover .menu-item a:hover {
   color: #fd438e;
   text-decoration: underline;
 }
 
-.search-container:hover .icon {
+.transparent-nav:hover .icon {
+  color: #555;
+}
+
+/* Navbar sólida nas outras páginas */
+.solid-nav {
+  display: block;
+  background-color: white;
+}
+
+.solid-nav .menu-item a {
+  color: #555; 
+}
+
+.solid-nav .menu-item a:hover {
+  color: #fd438e;
+  text-decoration: underline;
+}
+
+.solid-nav .icon {
   color: #555;
 }
 
@@ -29,11 +48,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   padding: 1rem 2rem;
 }
-
-
 
 .search-menu {
     list-style: none;
@@ -50,16 +66,12 @@
 .menu-item img {
     width: 15.6rem; 
     height: auto; 
-    
 }
 
 .menu-item a {
     text-decoration: none;
     color: white;
 }
-
-
-
 
 .icons-container {
     display: flex;
@@ -74,68 +86,81 @@
 
 .search-container-small {
     display: none; 
-
     width: 100%;
-  }
-  
-  .hamburger-menu {
+}
+
+.hamburger-menu {
     position: relative;
-  }
-  
-  .hamburger-icon {
+}
+
+.hamburger-icon {
     font-size: 2rem;
     color: #555;
     cursor: pointer;
-  }
-  
-  .navbar {
-    position: absolute;
-    top: 100%; 
-    right: -5rem; 
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    z-index: 1000; 
-    transition: opacity 0.3s ease, transform 0.3s ease;
-    opacity: 0;
-    transform: translateY(-10px);
-  }
+}
 
-  details[open] .navbar {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  details > summary {
-    list-style: none; 
-  }
-  
-  details > summary::-webkit-details-marker {
-    display: none; 
-  }
+/* Sidebar */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -250px; 
+  width: 250px;
+  height: 100vh; 
+  background-color: white;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  z-index: 2000;
+}
 
-  .navbar ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .navbar ul li {
-    margin: 10px 0;
-  }
-  
-  .navbar ul li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 16px;
-  }
+.sidebar.open {
+  left: 0; 
+  z-index: 1;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  text-decoration: none;
+  color: #333;
+  font-size: 18px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  align-self: flex-end;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.close-btn:hover {
+  color: #fd438e;
+}
+
+
+.hamburger-icon {
+  font-size: 2rem;
+  color: #555;
+  cursor: pointer;
+}
 
 
 @media (max-width: 1000px) {
   .search-container {
     top: 23px;
-
   }
 
     .search-menu {
