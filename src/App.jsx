@@ -4,6 +4,7 @@ import Measure from "./pages/Measure/Measure";
 import Header from "./components/Header/Header";
 import Navigation from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
+import Purchase from "./pages/Purchase/Purchase";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/measure" element={<Measure />} />
+        <Route path="/purchase/:productName" element={<Purchase /> } />
       </Routes>
 
       <Footer/>

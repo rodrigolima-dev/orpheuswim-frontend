@@ -5,8 +5,8 @@ import { FaBars } from "react-icons/fa";
 import { useNavigate, useLocation } from "react-router-dom";
 
 export default function Navigation () {
-  const logoDefault = "./images/logo-site.png";
-  const logoWhite = "./images/logo-white.png";
+  const logoDefault = "/images/logo-site.png";
+  const logoWhite = "/images/logo-white.png";
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [logoSrc, setLogoSrc] = useState(isHome ? logoWhite : logoDefault);
@@ -52,7 +52,6 @@ export default function Navigation () {
           <FaBars className="hamburger-icon icon" onClick={() => setIsSidebarOpen(true)} />
         </div>
         <div className="icons-container">
-          <FiUser className="icon" />
           <FiShoppingCart className="icon" />
         </div>
       </div>

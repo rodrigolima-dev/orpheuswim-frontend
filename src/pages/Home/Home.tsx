@@ -11,42 +11,42 @@ import { useNavigate } from "react-router-dom";
 export default function Home () {
     const products = [
       {
-        image: "./images/pecas/peca_01.png",
+        image: "/images/pecas/peca_01.png",
         className: "element-image",
         title: "Conjunto saída de praia",
         description: "Estampa vibrante para dias ensolarados.",
         price: "R$120,00"
       },
       {
-        image: "./images/pecas/peca_02.jpg",
+        image: "/images/pecas/peca_02.jpg",
         className: "element-image",
         title: "Bikini preto básico (sutiã)",
         description: "Conforto e sofisticação para qualquer ocasião.",
         price: "R$150,00"
       },
       {
-        image: "./images/pecas/peca_03.jpg",
+        image: "/images/pecas/peca_03.jpg",
         className: "element-image",
         title: "Bikini preto básico",
         description: "Leve e confortável, perfeito para o verão.",
         price: "R$90,00"
       },
       {
-        image: "./images/pecas/peca_04.jpg",
+        image: "/images/pecas/peca_04.jpg",
         className: "element-image",
         title: "Bolsa",
         description: "Estilosa e prática para momentos à beira-mar.",
         price: "R$110,00"
       },
       {
-        image: "./images/pecas/peca_05.jpg",
+        image: "/images/pecas/peca_05.jpg",
         className: "element-image",
         title: "Bikini Azul Oceano",
         description: "Versátil e charmosa para compor o look.",
         price: "R$75,00"
       },
       {
-        image: "./images/pecas/peca_06.jpg",
+        image: "/images/pecas/peca_06.jpg",
         className: "element-image",
         title: "Top Cropped",
         description: "Moderno e descolado para arrasar no visual.",
@@ -80,7 +80,7 @@ export default function Home () {
                 <div className="news-elements">
                   {
                     products.map((product, index) => (
-                      <Card key={index} {...product} />
+                      <Card key={index} {...product}/>
                     ))
                   }
                 </div>
