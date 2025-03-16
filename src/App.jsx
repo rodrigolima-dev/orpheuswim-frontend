@@ -9,18 +9,21 @@ import Purchase from "./pages/Purchase/Purchase";
 
 function App() {
   return (
-    
     <BrowserRouter> 
+
       <Header />
-      <Navigation/>
+      <Navigation />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/measure" element={<Measure />} />
-        <Route path="/purchase/:productName" element={<Purchase /> } />
-      </Routes>
 
-      <Footer/>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/measure" element={<Measure />} />
+          <Route path="/purchase/:productName" element={<Purchase />} />
+        </Routes>
+
+
+      <Footer />
+
     </BrowserRouter>
   );
 }

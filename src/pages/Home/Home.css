@@ -3,6 +3,7 @@ main {
     max-width: 1920px;
     margin: auto;
     padding: 2.5rem 5rem;
+    position: relative;
 }
 
 .home {
@@ -160,7 +161,6 @@ main {
 
 .about-container .image-container img{
     width: 100%;
-    height: 700px;
     border-radius: 5px;
 }
 
@@ -187,7 +187,7 @@ main {
     font-size: 1.25rem;
 }
 
-@media (min-width: 1670px) {
+@media (min-width: 1440px) {
 
     .main-container .slogan {
         position: absolute;
@@ -375,7 +375,7 @@ main {
 
 }
 
-@media (max-width: 425px) {
+@media (max-width: 480px) {
     main {
         padding: 2.5rem 1rem;
     }
@@ -398,11 +398,23 @@ main {
 
     .news-carousel .swiper-slide img {
         width: 100%;
-        height: 700px;
+        height: 400px;
         object-fit: cover; 
     }
 
-
+    .main-video-container {
+        width: 100%;
+        height: 200px;
+    
+    
+    }
+    
+    .main-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    
     
 }
 
