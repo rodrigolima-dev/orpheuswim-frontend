@@ -5,6 +5,7 @@ import Header from "./components/Header/Header";
 import Navigation from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import Purchase from "./pages/Purchase/Purchase";
+import Products from "./pages/Products/Products"
 
 
 function App() {
@@ -19,6 +20,8 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/measure" element={<Measure />} />
           <Route path="/purchase/:productName" element={<Purchase />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:category" element={<Products />} />
         </Routes>
 
 

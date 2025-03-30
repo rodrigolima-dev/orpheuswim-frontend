@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { FiShoppingCart, FiUser } from "react-icons/fi";
 import './Nav.css';
 import { FaBars } from "react-icons/fa";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 
 export default function Navigation () {
   const logoDefault = "/images/logo-site.png";
@@ -34,19 +34,31 @@ export default function Navigation () {
   const navigate = useNavigate();
 
   return (
-    <div className={`search-container ${isHome ? "transparent-nav" : "solid-nav"}`}
+    <div
+      className={`search-container ${isHome ? "transparent-nav" : "solid-nav"}`}
       onMouseEnter={() => isHome && setLogoSrc(logoDefault)}
-      onMouseLeave={() => isHome && setLogoSrc(logoWhite)}>
+      onMouseLeave={() => isHome && setLogoSrc(logoWhite)}
+    >
       <div className="nav-container">
         <ul className="search-menu">
           <li className="menu-item">
             <img src={logoSrc} alt="Logo Oprheuswim" />
           </li>
-          <li className="menu-item"><a href="#" onClick={() => { navigate("/"); setLogoSrc(logoDefault); }}>HOME</a></li>
-          <li className="menu-item"><a href="#">BIKINIS</a></li>
-          <li className="menu-item"><a href="#">CONJUNTOS</a></li>
-          <li className="menu-item"><a href="#">ACESSÓRIOS</a></li>
-          <li className="menu-item"><a href="#" onClick={() => { navigate('/measure'); setLogoSrc(logoDefault); }}>MEDIDAS</a></li>
+          <li className="menu-item">
+            <Link to="/" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>HOME</Link>
+          </li>
+          <li className="menu-item">
+            <Link to="/products/bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link>
+          </li>
+          <li className="menu-item">
+            <Link to="/products/conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link>
+          </li>
+          <li className="menu-item">
+            <Link to="/products/acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link>
+          </li>
+          <li className="menu-item">
+            <Link to="/measure" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}} >MEDIDAS</Link>
+          </li>
         </ul>
         <div className="search-container-small">
           <FaBars className="hamburger-icon icon" onClick={() => setIsSidebarOpen(true)} />
@@ -55,15 +67,17 @@ export default function Navigation () {
           <FiShoppingCart className="icon" />
         </div>
       </div>
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`} ref={sidebarRef}>
+
+      {/* Sidebar */}
+      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <button className="close-btn" onClick={() => setIsSidebarOpen(false)}>X</button>
         <nav className="navbar">
           <ul>
-            <li><a href="#"  onClick={() => { navigate("/"); setLogoSrc(logoDefault); }}>HOME</a></li>
-            <li><a href="#">BIKINIS</a></li>
-            <li><a href="#">CONJUNTOS</a></li>
-            <li><a href="#">ACESSÓRIOS</a></li>
-            <li><a href="#" onClick={() => { navigate('/measure'); setLogoSrc(logoDefault); }}>MEDIDAS</a></li>
+            <li><Link to="/" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>HOME</Link></li>
+            <li><Link to="/products/bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link></li>
+            <li><Link to="/products/conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link></li>
+            <li><Link to="/products/acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link></li>
+            <li><Link to="/measure" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>MEDIDAS</Link></li>
           </ul>
         </nav>
       </div>
