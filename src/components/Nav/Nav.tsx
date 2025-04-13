@@ -45,39 +45,45 @@ export default function Navigation () {
             <img src={logoSrc} alt="Logo Oprheuswim" />
           </li>
           <li className="menu-item">
-            <Link to="/" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>HOME</Link>
+            <Link to="/" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>HOME</Link>
           </li>
           <li className="menu-item">
-            <Link to="/products/bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link>
+            <Link to="/products" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>PRODUTOS</Link>
           </li>
           <li className="menu-item">
-            <Link to="/products/conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link>
+            <Link to="/products?category=bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link>
           </li>
           <li className="menu-item">
-            <Link to="/products/acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link>
+            <Link to="/products?category=conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link>
           </li>
           <li className="menu-item">
-            <Link to="/measure" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}} >MEDIDAS</Link>
+            <Link to="/products?category=acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link>
+          </li>
+          <li className="menu-item">
+            <Link to="/measure" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>MEDIDAS</Link>
           </li>
         </ul>
+
         <div className="search-container-small">
           <FaBars className="hamburger-icon icon" onClick={() => setIsSidebarOpen(true)} />
         </div>
+
         <div className="icons-container">
           <FiShoppingCart className="icon" />
         </div>
       </div>
 
       {/* Sidebar */}
-      <div className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
+      <div ref={sidebarRef} className={`sidebar ${isSidebarOpen ? "open" : ""}`}>
         <button className="close-btn" onClick={() => setIsSidebarOpen(false)}>X</button>
         <nav className="navbar">
           <ul>
-            <li><Link to="/" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>HOME</Link></li>
-            <li><Link to="/products/bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link></li>
-            <li><Link to="/products/conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link></li>
-            <li><Link to="/products/acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link></li>
-            <li><Link to="/measure" onClick={() => {setLogoSrc(logoDefault); setIsSidebarOpen(false)}}>MEDIDAS</Link></li>
+            <li><Link to="/" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>HOME</Link></li>
+            <li><Link to="/products" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>PRODUTOS</Link></li>
+            <li><Link to="/products?category=bikinis" onClick={() => setIsSidebarOpen(false)}>BIQUÍNIS</Link></li>
+            <li><Link to="/products?category=conjuntos" onClick={() => setIsSidebarOpen(false)}>CONJUNTOS</Link></li>
+            <li><Link to="/products?category=acessorios" onClick={() => setIsSidebarOpen(false)}>ACESSÓRIOS</Link></li>
+            <li><Link to="/measure" onClick={() => { setLogoSrc(logoDefault); setIsSidebarOpen(false) }}>MEDIDAS</Link></li>
           </ul>
         </nav>
       </div>

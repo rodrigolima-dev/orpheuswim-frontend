@@ -14,14 +14,12 @@ function App() {
 
       <Header />
       <Navigation />
-
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/measure" element={<Measure />} />
           <Route path="/purchase/:productName" element={<Purchase />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/:category" element={<Products />} />
+
         </Routes>
 
 

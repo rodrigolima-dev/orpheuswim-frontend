@@ -5,7 +5,7 @@ import "./Purchase.css"
 
 export default function Purchase() {
     const location = useLocation();
-    const {title, description, price, image} = location.state || {};
+    const {title, price, imageUrl} = location.state || {};
     const [size, setSize] = useState("P");
     const [color, setColor] = useState("Branco")
     const [quantity, setQuantity] = useState(1);
@@ -18,14 +18,14 @@ export default function Purchase() {
         <div className="purchase">
 
 
-            <img src={image} alt="Imagem do produto" className="product-image"/>
+            <img src={imageUrl} alt="Imagem do produto" className="product-image"/>
 
 
             <div className="product-info-container">
                 <div className="title-container">
                     <img src="/images/logo-site.png" alt="Logo orpheuswim" className="logo-orp"/>
                     <h1>{title}</h1>
-                    <span>{price}</span>
+                    <span>R${price}</span>
                 </div>
 
                 <div className="specifications-container">  

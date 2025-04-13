@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import './Home.css';
 import Card from "../../components/Card/Card";
 import Footer from "../../components/Footer/Footer";
@@ -6,58 +6,29 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from "react-router-dom";
+import { getReleases } from '../../services/apiConnect';
+
+
 
 
 export default function Home () {
-    const products = [
-      {
-        image: "/images/pecas/peca_01.png",
-        className: "element-image",
-        title: "Conjunto saída de praia",
-        description: "Estampa vibrante para dias ensolarados.",
-        price: "R$120,00"
-      },
-      {
-        image: "/images/pecas/peca_02.jpg",
-        className: "element-image",
-        title: "Bikini preto básico (sutiã)",
-        description: "Conforto e sofisticação para qualquer ocasião.",
-        price: "R$150,00"
-      },
-      {
-        image: "/images/pecas/peca_03.jpg",
-        className: "element-image",
-        title: "Bikini preto básico",
-        description: "Leve e confortável, perfeito para o verão.",
-        price: "R$90,00"
-      },
-      {
-        image: "/images/pecas/peca_04.jpg",
-        className: "element-image",
-        title: "Bolsa",
-        description: "Estilosa e prática para momentos à beira-mar.",
-        price: "R$110,00"
-      },
-      {
-        image: "/images/pecas/peca_05.jpg",
-        className: "element-image",
-        title: "Bikini Azul Oceano",
-        description: "Versátil e charmosa para compor o look.",
-        price: "R$75,00"
-      },
-      {
-        image: "/images/pecas/peca_06.jpg",
-        className: "element-image",
-        title: "Top Cropped",
-        description: "Moderno e descolado para arrasar no visual.",
-        price: "R$85,00"
-      }
-    ];
-
-
-
+    const [products, setProducts] = useState([])
     const navigate = useNavigate();
     
+    useEffect(() => {
+      const fetchProducts = async () => {
+        try {
+          const data = await getReleases();
+          setProducts(data);
+
+        } catch (err) {
+          console.error("Erro ao carregar produtos: ", err)
+        }
+      };
+
+      fetchProducts();
+    }, [])
+
 
     return(
         <div className="home">
