@@ -12,6 +12,8 @@ export default function Purchase() {
     const [size, setSize] = useState("P");
     const [color, setColor] = useState("Branco")
     const [quantity, setQuantity] = useState(1);
+    const [showModal, setShowModal] = useState(false);
+
 
     const sizes = ["P", "M", "G", "GG", "SB"];
     const colors = ["Branco", "Preto", "Azul", "Vermelho", "Escolher"];
@@ -32,7 +34,13 @@ export default function Purchase() {
         }
 
         addToCart(newItem);
-        alert("Produto adcionado ao carrinho.")
+        setShowModal(true);
+
+        // Fecha automaticamente após 2.5 segundos
+        setTimeout(() => {
+            setShowModal(false);
+            navigate('/');
+        }, 2500);
     }
 
 
@@ -105,13 +113,21 @@ export default function Purchase() {
 
                     <button className="buy-button" onClick={() => {
                         handleAddToCart();
-                        navigate('/')
                         }}>
                         ADCIONAR AO CARRINHO
                     </button>
 
                 </div>
             </div>
+
+             {/* Modal de confirmação */}
+             {showModal && (
+                <div className="modal-overlay" onClick={() => setShowModal(false)}>
+                    <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+                        <p>✅ Produto adicionado ao carrinho!</p>
+                    </div>
+                </div>
+            )}
 
         </div>
     )

@@ -1,6 +1,6 @@
 .element {
     margin-bottom: 1.2rem;
-    transition: 1s;
+    transition: transform 1s;
     cursor: pointer;
 }
 
@@ -12,7 +12,16 @@
     width: 100%;
     height: 36rem;
     border-radius: 5px;
-    object-fit: cover; 
+    object-fit: cover;
+
+}
+
+.element .image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 36rem;
+    border-radius: 5px;
+
 }
 
 .element h1 {
@@ -24,7 +33,7 @@
 .element p {
     font-size: 1rem;
     margin-bottom: 10px;
-    color: #adadad
+    color: #adadad;
 }
 
 .element span {
@@ -35,12 +44,10 @@
 
 @media (max-width: 1000px) {
     .element {
-        transition: 0s;
+        transition: none;
+    }
 
-    }
-    
     .element:hover {
-        transform: scale(1);
+        transform: none;
     }
-    
 }

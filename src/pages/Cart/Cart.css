@@ -51,8 +51,66 @@
     align-items: center;
     flex-wrap: wrap;
   }
+
+  .image-wrapper {
+    width: 200px; /* ou o tamanho que você quiser */
+    height: 100%;
+    position: relative;
+    flex-shrink: 0; /* evita que ele fique espremido */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+  }
   
-  .cart-item img {
+  .spinner::after {
+    content: "";
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    border: 4px solid #ccc;
+    border-top-color: #fd438e;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  /* Ocultar a imagem até ser carregada */
+  img.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+
+  /* Mostrar a imagem suavemente após o carregamento */
+  img.fade-in {
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+  
+  
+  .cart-item-image {
     width: 100px;
     height: 100px;
     object-fit: cover;
@@ -113,6 +171,7 @@
     cursor: pointer;
     margin-left: auto;
     transition: 0.2s;
+    margin-top: 20px;
   }
   
 
@@ -173,26 +232,34 @@
     margin-top: 1rem;
   }
 
-  .checkout-btn p {
+  .checkout-btn p{
     text-decoration: none;
     color: #fff; 
     font-size: 1rem;
   }
 
 
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
       
-  .cart-item {
-    height: 250px;
+    .cart-item {
+      height: 250px;
+    }
+    
+    .cart-item img {
+      width: 200px;
+      height: 100%;
+    }
   }
-  
-  .cart-item img {
-    width: 200px;
-    height: 100%;
-  }
-  }
+
   
   @media (max-width: 600px) {
+    .image-wrapper {
+      width: 100%; /* ou o tamanho que você quiser */
+      height: auto;
+      max-height: 400px;
+
+    }
+
     .cart-container {
       padding: 2.5rem 1rem;
     }

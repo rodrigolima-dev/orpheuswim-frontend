@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
   const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+  const [imageLoaded, setImageLoaded] = useState(false);
+  
 
   const totalPrice = cart.reduce(
     (total, item) => total + item.price * item.quantity,
@@ -38,6 +40,11 @@ export default function Cart() {
     window.open(whatsappUrl, "_blank");
   }
 
+   // Função chamada quando a imagem termina de carregar
+  const handleImageLoad = () => {
+    setImageLoaded(true); // Quando a imagem é carregada, remover o spinner
+  };
+
   return (
     <div className="cart-container">
       <h2 className="cart-title">Seu Carrinho</h2>
@@ -55,7 +62,16 @@ export default function Cart() {
                 className="cart-item"
                 key={`${item.id}-${item.size}-${item.color}`}
               >
-                <img src={item.imageUrl} alt={item.title} className="cart-item-image" />
+              <div className="image-wrapper">
+               {!imageLoaded && <div className="spinner"></div>}
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className={`cart-item-image ${imageLoaded ? "fade-in" : "hidden"}`}
+                    onLoad={handleImageLoad} // Chama a função quando a imagem carregar
+                  />
+
+              </div>
                 <div className="cart-item-info">
                   <h3>{item.title}</h3>
                   <p>Tamanho: {item.size}</p>

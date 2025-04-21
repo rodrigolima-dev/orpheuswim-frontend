@@ -1,0 +1,61 @@
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 36rem;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+/* Imagem some ao carregar */
+img.hidden {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Imagem aparece suavemente */
+img.fade-in {
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+/* Spinner centralizado */
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+/* Spinner redondo e animado */
+.spinner::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: 4px solid #ccc;
+  border-top-color: #fd438e;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Spinner desaparece ao carregar */
+.spinner.hidden {
+  opacity: 0;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
