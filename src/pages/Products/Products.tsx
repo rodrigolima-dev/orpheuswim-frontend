@@ -39,7 +39,7 @@ export default function Products() {
             {products.map((product) => (
               <Card
                 key={product.id}
-                image={product.imageUrl}
+                imageUrl={product.imageUrl}
                 title={product.title}
                 description={product.description}
                 price={product.price}

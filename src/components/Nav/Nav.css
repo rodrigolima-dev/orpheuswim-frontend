@@ -1,11 +1,32 @@
+.scrolled-nav {
+  background-color: white !important;
+  top: 0 !important;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease; 
+}
+
+.scrolled-nav .menu-item a {
+  color: #555 !important;
+}
+
+.scrolled-nav .icon {
+  color: #555 !important;
+}
+
+
+.transparent-nav.scrolled-nav {
+  top: 0 !important;
+}
+
 /* Navbar transparente apenas na Home */
 .transparent-nav {
-  position: absolute;
-  top: 30px;
-  left: 0;
+  position: fixed;
   width: 100%;
   z-index: 1;
-  transition: 0.3s;
+  background-color: transparent;
+  transition: background-color 2s;
+  transition: all 0.4s ease;
+  top: 30px; /* Mantém o valor original */
 }
 
 .transparent-nav:hover {
@@ -23,16 +44,16 @@
 
 .transparent-nav:hover .icon {
   color: #555;
+  cursor: pointer;
 }
 
 /* Navbar sólida nas outras páginas */
 .solid-nav {
-  display: block;
   background-color: white;
 }
 
 .solid-nav .menu-item a {
-  color: #555; 
+  color: #555;
 }
 
 .solid-nav .menu-item a:hover {
@@ -44,6 +65,7 @@
   color: #555;
 }
 
+/* Container principal da navbar */
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -51,61 +73,79 @@
   padding: 1rem 2rem;
 }
 
+/* Lista de navegação desktop */
 .search-menu {
-    list-style: none;
-    display: flex;
-    align-items: center; 
-    gap: .9rem; 
-    font-size: .9rem;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+  font-size: .9rem;
 }
 
 .menu-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .menu-item img {
-    width: 15.6rem; 
-    height: auto; 
+  width: 15.6rem;
+  height: auto;
 }
 
 .menu-item a {
-    text-decoration: none;
-    color: white;
+  text-decoration: none;
+  color: white;
+  transition: color 0.2s;
 }
 
+/* Ícones do carrinho e login */
 .icons-container {
-    display: flex;
-    align-items: center;
-    gap: 2rem; 
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  position: relative;
 }
 
 .icon {
-    font-size: 1.5rem;
-    color: white;
+  font-size: 1.5rem;
+  color: white;
+  transition: color 0.2s;
 }
 
+/* Badge do carrinho */
+.icons-container .cart-status {
+  background-color: #fd438e;
+  width: 14px;
+  height: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Ícone do menu hamburguer (mobile) */
 .search-container-small {
-    display: none; 
-    width: 100%;
-}
-
-.hamburger-menu {
-    position: relative;
+  display: none;
 }
 
 .hamburger-icon {
-    font-size: 2rem;
-    color: #555;
-    cursor: pointer;
+  font-size: 2rem;
+  color: #555;
+  cursor: pointer;
 }
 
-/* Sidebar */
+/* Sidebar lateral */
 .sidebar {
   position: fixed;
   top: 0;
-  left: -250px; 
+  left: -250px;
   width: 250px;
-  height: 100vh; 
+  height: 100vh;
   background-color: white;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
   transition: left 0.3s ease-in-out;
@@ -116,7 +156,7 @@
 }
 
 .sidebar.open {
-  left: 0; 
+  left: 0;
   z-index: 1;
 }
 
@@ -136,6 +176,7 @@
   font-size: 18px;
 }
 
+/* Botão para fechar o sidebar */
 .close-btn {
   background: none;
   border: none;
@@ -150,35 +191,22 @@
   color: #fd438e;
 }
 
-
-.hamburger-icon {
-  font-size: 2rem;
-  color: #555;
-  cursor: pointer;
-}
-
-
+/* Responsivo para mobile */
 @media (max-width: 1000px) {
   .search-container {
     top: 23px;
   }
 
-    .search-menu {
-        display: none; 
-    }
+  .search-menu {
+    display: none;
+  }
 
-    .search-container-small {
-        display: flex; 
-    }
+  .search-container-small {
+    display: flex;
+  }
 
-    .icons-container {
-        display: flex;
-        align-items: center;
-        gap: 2rem; 
-    }
-
-    .icon {
-        font-size: 2rem;
-        color: white;
-    }
+  .icon {
+    font-size: 2rem;
+    color: white;
+  }
 }

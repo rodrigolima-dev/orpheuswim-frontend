@@ -6,26 +6,29 @@ import Navigation from "./components/Nav/Nav";
 import Footer from "./components/Footer/Footer";
 import Purchase from "./pages/Purchase/Purchase";
 import Products from "./pages/Products/Products"
+import { CartProvider } from "./context/CartContext";
+import Cart from "./pages/Cart/Cart.jsx";
+
+
 
 
 function App() {
   return (
-    <BrowserRouter> 
 
+    <CartProvider>
+    <BrowserRouter>
       <Header />
       <Navigation />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/measure" element={<Measure />} />
-          <Route path="/purchase/:productName" element={<Purchase />} />
-          <Route path="/products" element={<Products />} />
-
-        </Routes>
-
-
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/measure" element={<Measure />} />
+        <Route path="/purchase/:productName" element={<Purchase />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/cart" element={<Cart />} />
+      </Routes>
       <Footer />
-
     </BrowserRouter>
+  </CartProvider>
   );
 }
 

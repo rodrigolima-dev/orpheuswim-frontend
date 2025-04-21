@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useRef } from "react";
-import { FiShoppingCart, FiUser } from "react-icons/fi";
+import { FiShoppingCart } from "react-icons/fi";
 import './Nav.css';
 import { FaBars } from "react-icons/fa";
 import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 export default function Navigation () {
   const logoDefault = "/images/logo-site.png";
@@ -11,7 +12,10 @@ export default function Navigation () {
   const isHome = location.pathname === "/";
   const [logoSrc, setLogoSrc] = useState(isHome ? logoWhite : logoDefault);
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
   const sidebarRef = useRef<HTMLDivElement>(null);
+
+  const { totalItems } = useCart();
 
   useEffect(() => {
     setLogoSrc(isHome ? logoWhite : logoDefault);
@@ -31,14 +35,34 @@ export default function Navigation () {
     };
   }, [isSidebarOpen]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 10;
+      if (isScrolled !== hasScrolled) {
+        setHasScrolled(isScrolled);
+        if (isHome) {
+          setLogoSrc(isScrolled ? logoDefault : logoWhite);
+        }
+      }
+    };
+
+    document.addEventListener('scroll', handleScroll);
+    return () => {
+      document.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasScrolled, isHome]);
+
+
   const navigate = useNavigate();
 
   return (
-    <div
-      className={`search-container ${isHome ? "transparent-nav" : "solid-nav"}`}
-      onMouseEnter={() => isHome && setLogoSrc(logoDefault)}
-      onMouseLeave={() => isHome && setLogoSrc(logoWhite)}
-    >
+      <div
+      className={`search-container ${isHome ? "transparent-nav" : "solid-nav"} ${
+        hasScrolled && isHome ? "scrolled-nav" : ""
+      }`}
+      onMouseEnter={() => isHome && !hasScrolled && setLogoSrc(logoDefault)}
+      onMouseLeave={() => isHome && !hasScrolled && setLogoSrc(logoWhite)}
+      >
       <div className="nav-container">
         <ul className="search-menu">
           <li className="menu-item">
@@ -69,7 +93,11 @@ export default function Navigation () {
         </div>
 
         <div className="icons-container">
-          <FiShoppingCart className="icon" />
+          <FiShoppingCart className="icon cart-icon" onClick={() => navigate('/cart')}/>
+          {totalItems > 0 && (
+            <span className="cart-status">{totalItems}</span>
+          )}
+
         </div>
       </div>
 

@@ -1,10 +1,13 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate, useNavigation } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 import "./Purchase.css"
 
 
 export default function Purchase() {
     const location = useLocation();
+    const { addToCart } = useCart();
+
     const {title, price, imageUrl} = location.state || {};
     const [size, setSize] = useState("P");
     const [color, setColor] = useState("Branco")
@@ -12,6 +15,25 @@ export default function Purchase() {
 
     const sizes = ["P", "M", "G", "GG", "SB"];
     const colors = ["Branco", "Preto", "Azul", "Vermelho", "Escolher"];
+
+    const navigate = useNavigate();
+
+
+    //Função para adcionar ao carrinho
+    function handleAddToCart() {
+        const newItem = {
+            id: location.state.id,
+            title,
+            price,
+            imageUrl,
+            size,
+            color,
+            quantity
+        }
+
+        addToCart(newItem);
+        alert("Produto adcionado ao carrinho.")
+    }
 
 
     return(
@@ -81,8 +103,11 @@ export default function Purchase() {
                         </div>
                     </div>
 
-                    <button className="buy-button">
-                        COMPRAR AGORA
+                    <button className="buy-button" onClick={() => {
+                        handleAddToCart();
+                        navigate('/')
+                        }}>
+                        ADCIONAR AO CARRINHO
                     </button>
 
                 </div>
