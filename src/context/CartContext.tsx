@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 // Tipo do produto no carrinho
 type CartItem = {
@@ -34,7 +34,15 @@ export const useCart = () => {
 
 // Componente que envolve a aplicação
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    const storedCart = localStorage.getItem('cart');
+    return storedCart ? JSON.parse(storedCart) : [];
+  });
+
+  // Salvar o carrinho no localStorage sempre que mudar
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (newItem: CartItem) => {
     setCart((prevCart) => {
@@ -76,7 +84,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
       )
     );
   };
-  
+
   const totalItems = cart.length;
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
 
