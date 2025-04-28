@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { login } from "../../services/apiConnect";
+import "./Login.css"
 
 export default function Login() {
     const [username, setUsername] = useState("");
@@ -13,6 +14,7 @@ export default function Login() {
 
         try {
             const data = await login(username, password)
+            console.log("Token recebido:", data.token)
 
             //Salvando token
             localStorage.setItem("token", data.token);
@@ -20,27 +22,36 @@ export default function Login() {
             //Redirecionar para página protegida
             navigate("/admin")
         } catch (err) {
-            alert("Usuário ou senha inválidos")
+          alert(`Usuário ou senha inválidos\nUsername: ${username}\nPassword: ${password}`);
         }
     }
 
     return (
-        <div style={{ padding: 32 }}>
-        <h2>Login</h2>
+      <div className="login-container">
+        <img src="/images/logo-site.png" alt="Logo" className="logo"/>
+
         <form onSubmit={handleSubmit}>
+
           <input
             placeholder="Usuário"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
-          /><br />
+          /> 
+
+          <br />
+
           <input
             type="password"
             placeholder="Senha"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-          /><br />
+          />
+          
+          <br />
+
           <button type="submit">Entrar</button>
         </form>
+
       </div>
     );
 }

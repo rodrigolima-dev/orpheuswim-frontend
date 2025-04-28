@@ -49,28 +49,33 @@ export default function Home () {
                 </div>
       
                 <div className="news-elements">
-                  {
-                    products.map((product, index) => (
-                      <Card key={index} id={product.id} {...product}/>
-                    ))
-                  }
-                </div>
+                {products.length > 0 ? (
+                  products.map((product, index) => (
+                    <Card key={index} id={product.id} {...product} />
+                  ))
+                ) : (
+                  <p></p>     
+                )}
+              </div>
 
-                <div className="news-carousel-container">
-                  <Swiper className="news-carousel"
-                  modules={[Navigation, Pagination]} 
+              {products.length > 0 && (
+              <div className="news-carousel-container">
+                <Swiper
+                  className="news-carousel"
+                  modules={[Navigation, Pagination]}
                   spaceBetween={10}
                   slidesPerView={1}
                   navigation
                   pagination={{ clickable: true }}
-                  >
+                >
                   {products.map((product, index) => (
                     <SwiperSlide key={index}>
-                      <Card key={index} id={product.id} {...product} />
+                      <Card id={product.id} {...product} />
                     </SwiperSlide>
                   ))}
                 </Swiper>
-                </div>
+              </div>
+            )}
             </div>
 
 

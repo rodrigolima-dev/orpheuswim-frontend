@@ -1,0 +1,58 @@
+.private-layout {
+  display: flex;
+  flex-direction: row;
+  height: 100vh;
+  overflow: hidden;
+  
+}
+
+.lateral-nav {
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+  margin-right: 20px;
+  background-color: #fb5799;
+  width: 350px;
+  padding: 20px 20px 0 20px;
+  position: fixed; /* fixa a barra na tela */
+  top: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+.lateral-nav img {
+    width: 300px;
+    height: auto;
+
+    margin-bottom: 40px;
+}
+
+.lateral-nav ul {
+  list-style: none;
+}
+
+.lateral-nav li {
+    padding: 0;
+    font-size: 17px;
+
+    color: white;
+    cursor: pointer;
+
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+}
+
+.lateral-nav li a {
+    text-decoration: none;
+    color: white;
+}
+
+
+.content {
+  margin-left: 350px; /* espaço para a lateral */
+  width: calc(100% - 250px); 
+  height: 100vh;
+  overflow-y: auto; /* só o conteúdo rola */
+  padding: 40px;
+
+}
+

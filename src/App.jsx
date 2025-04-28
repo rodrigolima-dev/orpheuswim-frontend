@@ -7,8 +7,11 @@ import { CartProvider } from "./context/CartContext";
 import Cart from "./pages/Cart/Cart.jsx";
 import Login from "./pages/Login/Login.jsx";
 import { PrivateRoute } from "./components/PrivateRoute/PrivateRoute.jsx";
-import Admin from "./pages/Admin/Admin.jsx";
+import Admin from "./pages/PrivatePages/Admin/Admin.jsx";
 import MainLayout from "./layouts/MainLayout.jsx";
+import PrivateLayout from "./layouts/PrivateLayout/PrivateLayout.jsx";
+import Register from "./pages/PrivatePages/Register/Register.tsx";
+
 
 
 
@@ -32,7 +35,8 @@ function App() {
 
           {/* Admin protegido e sem layout */}
           <Route element={<PrivateRoute />}>
-            <Route path="/admin" element={<Admin />} />
+            <Route path="/admin" element={<PrivateLayout>  <Admin /> </PrivateLayout>  } />
+            <Route path="/register" element={<PrivateLayout>  <Register /> </PrivateLayout>  } />
           </Route>
         </Routes>
       </BrowserRouter>

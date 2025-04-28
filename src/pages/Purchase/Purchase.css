@@ -97,6 +97,8 @@
 
     font-size: 0.9rem;
     transition: background-color 0.3s, border-color 0.3s;
+
+    color: #343333;
 }
 
 .size-button.selected {
@@ -105,6 +107,7 @@
 }
 
 .size-button:hover {
+    background-color: white;
     border-color: #fd438e;
 }
 
@@ -115,28 +118,41 @@
     border-color: #cbcaca;
     border-radius: 5px;
 
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     padding: 0 0.625rem;
+    font-weight: 300;
 }
 
 .quantity-container {
-    margin-top: 1.25rem;
+    margin-top: 20px;
+
     display: flex;
+    flex-direction: row;
+
+    height: 60px;
+
 }
 
 .quantity-container .set-quantity {
-    width: 3.75rem;
-    height: 3.75rem;
+    all: unset;
+    width: 4rem;
+    height: 100%;
 
     cursor: pointer;
 
     border: 2px solid #ccc;
     background-color: white;
+
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
 }
 
-.quantity {
-    width: 3.75rem;
-    height: 3.75rem;
+.quantity-display {
+    width: 4rem;
+    height: 4rem;
 
     border-top-width: 2px;
     border-bottom-width: 2px;
@@ -151,6 +167,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    color: #333;
 }
 
 .buy-button {
@@ -222,6 +240,11 @@
     .product-info-container {
         height: 650px;
     }
+
+    .quantity-display {
+        width: 4rem;
+        height: 4.55rem;
+    }
 }
 
 @media(max-width: 480px) {
@@ -263,7 +286,7 @@
     }
     
     
-    .size-buttons {
+    .size-buttons {  
         display: flex;
         gap: 1rem;
         margin-top: 0.9rem;
@@ -280,24 +303,15 @@
         height: 4rem;
     }
     
-    .quantity-container {
-        margin-top: 1.25rem;
-        display: flex;
-    }
     
     .quantity-container .set-quantity{
         width: 5rem;
         height: 5rem;
-    
-        cursor: pointer;
-    
-        border: 2px solid #ccc;
-        background-color: white;
     }
 
-    .quantity-container .quantity {
+    .quantity-container .quantity-display {
         width: 5rem;
-        height: 5rem;
+        height: 5.35rem;
     }
 
 

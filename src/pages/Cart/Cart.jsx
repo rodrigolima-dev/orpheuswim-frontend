@@ -86,7 +86,9 @@ export default function Cart() {
                     >
                       -
                     </button>
+                    {/* I don't know why but if it was a div or span, not align */}
                     <span>{item.quantity}</span>
+
                     <button
                       className="quantity-btn"
                       onClick={() => updateQuantity(item.id, item.size, item.color, item.quantity + 1)}

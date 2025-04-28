@@ -99,9 +99,11 @@ export default function Purchase() {
                             >
                                 -
                             </button>
-                            <div className="quantity">
+
+                            <div className="quantity-display">
                                 <span>{quantity}</span>
                             </div>
+                            
                             <button
                                 className="set-quantity"
                                 onClick={() => setQuantity((q) => q + 1)}
