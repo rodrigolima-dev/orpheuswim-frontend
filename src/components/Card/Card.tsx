@@ -24,8 +24,7 @@ export default function Card({id, imageUrl, title, description, price}) {
                 <ImageWithLoading src={imageUrl} alt={title} className="element-image" />
             </div>
             <h1>{title}</h1>
-            <p>{description}</p>
-            <span>R${price}</span>
+            <span>R${price.toFixed(2)}</span>
         </div>
     );
 }

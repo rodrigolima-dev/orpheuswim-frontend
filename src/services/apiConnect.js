@@ -32,11 +32,18 @@ export const getReleases = async () => {
   }
 };
 
-export const getProducts = async (category = "") => {
+export const getProducts = async (category = "", search="") => {
   try {
-    const url = category
-      ? `/products?category=${category}`
-      : "/products";
+    let url = "/products";
+    const params = [];
+
+    if (category) params.push(`category=${encodeURIComponent(category)}`);
+    if (search) params.push(`search=${encodeURIComponent(search)}`);
+
+    if (params.length > 0) {
+      url += `?${params.join("&")}`;
+    }
+
     const response = await api.get(url);
     return response.data;
   } catch (error) {
@@ -70,3 +77,15 @@ export const updateProduct = async (product) => {
     throw error;
   }
 };
+
+export const createProduct = async (product) => {
+  try {
+    const response = await api.post("/admin", product, {
+      headers: getAuthHeaders(),
+    });
+    return response.data;
+  } catch (error) {
+    console.error("Erro ao criar produto:", error);
+    throw error;
+  }
+}

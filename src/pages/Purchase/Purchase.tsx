@@ -8,14 +8,14 @@ export default function Purchase() {
     const location = useLocation();
     const { addToCart } = useCart();
 
-    const {title, price, imageUrl} = location.state || {};
+    const {title, price, imageUrl, description} = location.state || {};
     const [size, setSize] = useState("P");
     const [color, setColor] = useState("Branco")
     const [quantity, setQuantity] = useState(1);
     const [showModal, setShowModal] = useState(false);
 
 
-    const sizes = ["P", "M", "G", "GG", "SB"];
+    const sizes = ["P", "M", "G", "GG"];
     const colors = ["Branco", "Preto", "Azul", "Vermelho", "Escolher"];
 
     const navigate = useNavigate();
@@ -55,14 +55,37 @@ export default function Purchase() {
                 <div className="title-container">
                     <img src="/images/logo-site.png" alt="Logo orpheuswim" className="logo-orp"/>
                     <h1>{title}</h1>
-                    <span>R${price}</span>
+                    <span>R${price.toFixed(2)}</span>
+                </div>
+
+                <div className="description-container">
+
+                    <div className="individual-product-description">
+                        <p>{description}</p>
+                    </div>
+
+                    <div className="standart-description">
+                        <p> 100% Algodão </p>
+
+                        <div className="care-instructions">
+                            <h3>Cuidados: </h3>
+                            <ul>
+                                <li>Lavar à mão com cuidado.</li>
+                                <li>Evitar produtos químicos fortes.</li>
+                                <li>Secar à sombra, em superfície plana.</li>
+                                <li>Guardar dobrado para preservar a forma.</li>
+                            </ul>
+
+
+                        </div>
+                    </div>
                 </div>
 
                 <div className="specifications-container">  
                     <div className="selectors">
                         {/* Bolinhas de Tamanho */}
                         <div className="size-selector">
-                            <label className="label">TAMANHO <span>(sb = sob medida)</span></label>
+                            <label className="label"><h1>TAMANHO</h1> <span>(sb = sob medida)</span></label>
                             <div className="size-buttons">
                                 {sizes.map((s) => (
                                     <button
@@ -78,7 +101,7 @@ export default function Purchase() {
 
                         {/* Dropdown de Cor */}
                         <div className="dropdown">
-                            <label className="label">COR</label>
+                            <label className="label"><h1>COR</h1></label>
                             <select 
                             value={color}
                             onChange={(c) => setColor(c.target.value)}
