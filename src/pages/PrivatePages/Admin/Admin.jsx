@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { deleteProduct, getProducts, updateProduct } from "../../../services/apiConnect";
+import debounce from 'lodash.debounce';
+
 import './Admin.css';
 
 export default function Admin() {
@@ -20,13 +22,28 @@ export default function Admin() {
         fetchProducts();
     }, []);
 
-    const fetchProducts = async () => {
+    const fetchProducts = async (search = '') => {
         try {
-            const response = await getProducts();
+            const response = await getProducts("", search);
             setProducts(Array.isArray(response) ? response : []);
         } catch (error) {
             console.error("Erro ao carregar os produtos: ", error);
             setProducts([]);
+        }
+    };
+
+    const debouncedSearch = debounce((search) => {
+        fetchProducts(search);
+    }, 300);
+
+    const handleSearchChange = (e) => {
+        const { value } = e.target;
+        setSearchTerm(value);
+
+        if (value.trim() === '') {
+            fetchProducts(); // Se o campo de pesquisa estiver vazio, recarrega todos os produtos
+        } else {
+            debouncedSearch(value); // Chama a função de pesquisa com debounce
         }
     };
 
@@ -39,15 +56,7 @@ export default function Admin() {
         }
     };
 
-    const handleSearch = async () => {
-        try {
-            const response = await getProducts("", searchTerm); 
-            setProducts(Array.isArray(response) ? response : []);
-        } catch (error) {
-            console.error("Erro ao buscar produtos: ", error);
-            setProducts([]);
-        }
-    };
+
 
     const openModal = (product) => {
         setCurrentProduct(product);
@@ -98,9 +107,9 @@ export default function Admin() {
                 type="text" 
                 placeholder="Pesquisar..." 
                 value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
+                onChange={handleSearchChange}
                 />
-                <button onClick={handleSearch}>Buscar</button>
+
             </div>
 
             <div className="products-list-container">
