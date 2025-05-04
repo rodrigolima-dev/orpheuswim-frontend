@@ -15,7 +15,7 @@ export default function Purchase() {
     const [showModal, setShowModal] = useState(false);
 
 
-    const sizes = ["P", "M", "G", "GG"];
+    const sizes = ["PP", "P", "M", "G"];
     const colors = ["Branco", "Preto", "Azul", "Vermelho", "Escolher"];
 
     const navigate = useNavigate();
@@ -85,7 +85,7 @@ export default function Purchase() {
                     <div className="selectors">
                         {/* Bolinhas de Tamanho */}
                         <div className="size-selector">
-                            <label className="label"><h1>TAMANHO</h1> <span>(sb = sob medida)</span></label>
+                            <label className="label"><h1>TAMANHO</h1> </label>
                             <div className="size-buttons">
                                 {sizes.map((s) => (
                                     <button

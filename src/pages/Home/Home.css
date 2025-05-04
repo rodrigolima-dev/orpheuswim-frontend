@@ -87,6 +87,12 @@ main {
     
 }
 
+.orders-container .buttons-contact-container {
+    display: flex;
+
+    align-items: center;
+    gap: 10px;
+}
 
 .orders-container  .orders-text {
     width: 900px;

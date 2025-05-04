@@ -7,6 +7,7 @@ import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from "react-router-dom";
 import { getReleases } from '../../services/apiConnect';
+import { FaWhatsapp } from "react-icons/fa";
 
 
 
@@ -84,11 +85,17 @@ export default function Home () {
                   <h1>Sua ideia, nossa <span>arte.</span></h1>
                   <p>Criamos peças <span>exclusivas</span>, feitas <span>sob medida</span> para você brilhar em qualquer ocasião. Do dia a dia aos momentos especiais, damos vida à sua inspiração com estilo único e personalizado. Fale com a gente no WhatsApp e vamos transformar suas ideias em realidade!</p>
                   <p>Ainda não sabe medir?</p>
-                  <button onClick={() => {
-                    navigate("/measure")
-                    }}>
-                    Saiba mais
-                  </button>
+                  <div className="buttons-contact-container">
+                    <button onClick={() => {
+                      navigate("/measure")
+                      }}>
+                      Saiba mais
+                    </button>
+
+                    <a href="https://wa.me/5521983103439" target="_blank">
+                        <FaWhatsapp className="contact-icon-home" color="#555" size={35}/>
+                    </a>
+                  </div>
                 </div>
 
                 <div className="image-large">
