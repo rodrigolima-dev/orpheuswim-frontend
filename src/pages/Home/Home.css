@@ -27,6 +27,7 @@ main {
 
 .news-carousel-container{
     display: none;
+    height: auto;
 }
 
 .news-container {

@@ -36,7 +36,7 @@ export default function Home () {
 
           <div className="main-video-container">
             <video autoPlay loop muted playsInline disablePictureInPicture controlsList="nodownload nofullscreen noremoteplayback" className="main-video">
-              <source src="./images/main-video.mp4" type="video/mp4"/>
+              <source src="/images/main-video.mp4" type="video/mp4"/>
               Seu navegador não suporta a tag de vídeo.
             </video>
           </div>
