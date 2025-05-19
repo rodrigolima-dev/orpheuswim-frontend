@@ -5,7 +5,8 @@ export default function ImageWithLoading({ src, alt, className = '', style = {} 
   const [loading, setLoading] = useState(true);
 
   return (
-    <div className="image-wrapper">
+
+    <div className="custom-image-wrapper">
       {loading && <div className="spinner" />}
       <img
         src={src}

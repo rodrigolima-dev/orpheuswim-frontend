@@ -5,7 +5,6 @@ import ImageWithLoading from "../Loading/ImageWithLoading";
 
 export default function Card({id, imageUrl, title, description, price}) {
     const navigation = useNavigate();
-    const [loading, setLoading] = useState(true);
 
     // Sem espaços
     const formattedTitle = title.replace(/\s+/g, "-").toLowerCase();
@@ -19,8 +18,7 @@ export default function Card({id, imageUrl, title, description, price}) {
                 })
             }
         >
-            <div className="image-wrapper">
-                {loading && <div className="spinner" />}
+            <div className="image-card-wrapper">
                 <ImageWithLoading src={imageUrl} alt={title} className="element-image" />
             </div>
             <h1>{title}</h1>

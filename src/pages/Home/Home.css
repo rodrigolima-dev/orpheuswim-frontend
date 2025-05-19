@@ -62,7 +62,7 @@ main {
 
 .news-container .news-text-container p {
     text-align: center;
-    font-size: 1rem;
+    font-size: .9rem;
     
     color: #adadad;
 }
@@ -325,26 +325,30 @@ main {
         display: flex;
     }
 
+    .news-container {
+        height: auto;
+        margin-bottom: 50px;
+    }
+
     .news-elements {
         display: none;
     }
+
     .news-carousel-container {
         display: flex;
         width: 100%;
         height: auto;
         z-index: 0;
-
-        margin-bottom: 50px;
     }
 
     .news-carousel {
         width: 100%;
-        height: 100%;
+        height: auto;
     }
 
     .news-carousel .swiper-slide {
         height: auto;
-        padding: 0 0 20px 0;
+
     }
 
     .news-carousel .swiper-pagination-bullet {
@@ -369,6 +373,32 @@ main {
 }
 
 @media(max-width: 770px) {
+    main {
+        padding: 2.5rem 1rem;
+    }
+    .news-container .news-text-container {
+        margin-top: 50px;
+    }
+
+    .news-container .news-text-container h1 {
+        font-size: 2.3rem;
+        font-weight: 500;
+        letter-spacing: 2px;
+        color: #555;
+
+    }
+
+    .news-container .news-text-container p {
+        text-align: center;
+        font-size: .9rem;
+        
+        color: #adadad;
+    }
+
+    .news-carousel .swiper-slide {
+        height: auto;
+    }
+
     .main-video-container {
         height: 300px;
       
@@ -386,6 +416,7 @@ main {
         padding: 2.5rem 1rem;
     }
 
+
     .main-small {
         margin: 40px 0px 10px 0px;
     }
@@ -402,15 +433,14 @@ main {
 
     }
 
-    .news-carousel .swiper-slide img {
-        width: 100%;
-        height: 400px;
-        object-fit: cover; 
+    .news-carousel .swiper-slide {
+        height: auto;
     }
+
 
     .main-video-container {
         width: 100%;
-        height: 200px;
+        height: 250px;
     
     
     }
@@ -419,6 +449,21 @@ main {
         width: 100%;
         height: 100%;
         object-fit: cover;
+    }
+
+    .news-container .news-text-container {
+        width: 350px;
+    }
+
+
+    .news-container .news-text-container h1 {
+        font-size: 2rem;
+
+    }
+
+    .news-container .news-text-container p {
+        font-size: 1rem;
+
     }
     
     

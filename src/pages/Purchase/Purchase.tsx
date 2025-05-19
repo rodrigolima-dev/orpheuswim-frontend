@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, useNavigation } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import "./Purchase.css"
+import Dropdown from "../../components/Dropdown/Dropdown";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 
 export default function Purchase() {
@@ -19,6 +22,13 @@ export default function Purchase() {
     const colors = ["Branco", "Preto", "Azul", "Vermelho", "Escolher"];
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        AOS.init({
+            duration: 800,
+            once: true, // garante que a animação ocorra uma única vez
+        });
+    }, []);
 
 
     //Função para adcionar ao carrinho
@@ -48,10 +58,16 @@ export default function Purchase() {
         <div className="purchase">
 
 
-            <img src={imageUrl} alt="Imagem do produto" className="product-image"/>
+            <img 
+            src={imageUrl} 
+            alt="Imagem do produto" 
+            className="product-image"
+            data-aos="fade-up"
+            data-aos-delay="200"
+            />
 
 
-            <div className="product-info-container">
+            <div className="product-info-container" data-aos="fade-up" data-aos-delay="300">
                 <div className="title-container">
                     <img src="/images/logo-site.png" alt="Logo orpheuswim" className="logo-orp"/>
                     <h1>{title}</h1>
@@ -100,20 +116,12 @@ export default function Purchase() {
                         </div>
 
                         {/* Dropdown de Cor */}
-                        <div className="dropdown">
-                            <label className="label"><h1>COR</h1></label>
-                            <select 
-                            value={color}
-                            onChange={(c) => setColor(c.target.value)}
-                            >
-                                {colors.map((c) => (
-                                    <option key={c} value={c}>
-                                        {c}
-                                    </option>
-                                ))}
-                            </select>
-
-                        </div>
+                        <Dropdown
+                        label="COR"
+                        options={colors}
+                        value={color}
+                        onChange={(value) => setColor(value)}
+                        />
 
                         <div className="quantity-container">
                             <button

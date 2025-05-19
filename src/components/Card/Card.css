@@ -1,28 +1,32 @@
 .element {
-    margin-bottom: 1.2rem;
+    margin-bottom: 2rem;
     transition: transform 1s;
+    height: auto;
     cursor: pointer;
+
+    
 }
 
 .element:hover {
     transform: scale(1.01);
 }
 
+.element .image-card-wrapper {
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+
+
+}
+
 .element-image {
     width: 100%;
-    height: 38rem;
+    height: 45rem;
     border-radius: 5px;
     object-fit: cover;
 
 }
 
-.element .image-wrapper {
-    position: relative;
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
-
-}
 
 .element h1 {
     font-size: 1.4rem;
@@ -43,9 +47,9 @@
     letter-spacing: 1.5px;
 }
 
-@media(min-width: 1920px)  {
+@media(max-width: 1920px)  {
     .element-image {
-        height: 45rem;
+        height: 35rem;
     }
 }
 
@@ -60,4 +64,25 @@
 
 
 
+}
+
+@media (max-width: 768px) {
+    .element-image {
+        height: 60rem;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .element-image {
+        height: 38rem;
+    }
+
+    .element h1 {
+        font-size: 1.2rem;
+    }
+
+    .element span {
+        font-size: 1rem;
+    }
 }

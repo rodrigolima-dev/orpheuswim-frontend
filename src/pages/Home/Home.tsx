@@ -1,13 +1,16 @@
 import React, { useEffect, useState } from "react";
 import './Home.css';
 import Card from "../../components/Card/Card";
-import Footer from "../../components/Footer/Footer";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from "react-router-dom";
 import { getReleases } from '../../services/apiConnect';
 import { FaWhatsapp } from "react-icons/fa";
+import FadeUp from "../../components/FadeUp/FadeUp";
 
 
 
@@ -16,7 +19,15 @@ export default function Home () {
     const [products, setProducts] = useState([])
     const navigate = useNavigate();
     
+
+
     useEffect(() => {
+        AOS.init({
+        duration: 800, 
+        once: true     
+      });
+
+
       const fetchProducts = async () => {
         try {
           const data = await getReleases();
@@ -43,13 +54,13 @@ export default function Home () {
 
   
           <main>
-              <div className="news-container">
-                <div className="news-text-container">
+              <FadeUp className="news-container" delay={100}>
+                <div className="news-text-container" >
                     <h1>NOVAS COLEÇÕES</h1>
                     <p>Peças exclusivas e cheias de charme para deixar seu verão ainda mais especial.</p>
                 </div>
       
-                <div className="news-elements">
+                <FadeUp className="news-elements" delay={200}>
                 {products.length > 0 ? (
                   products.map((product, index) => (
                     <Card key={index} id={product.id} {...product} />
@@ -57,10 +68,10 @@ export default function Home () {
                 ) : (
                   <p></p>     
                 )}
-              </div>
+              </FadeUp>
 
               {products.length > 0 && (
-              <div className="news-carousel-container">
+              <FadeUp className="news-carousel-container" delay={100}>
                 <Swiper
                   className="news-carousel"
                   modules={[Navigation, Pagination]}
@@ -75,12 +86,12 @@ export default function Home () {
                     </SwiperSlide>
                   ))}
                 </Swiper>
-              </div>
+              </FadeUp>
             )}
-            </div>
+            </FadeUp>
 
 
-            <div className="orders-container">
+            <FadeUp className="orders-container" delay={100}>
                 <div className="orders-text">
                   <h1>Sua ideia, nossa <span>arte.</span></h1>
                   <p>Criamos peças <span>exclusivas</span>, feitas <span>sob medida</span> para você brilhar em qualquer ocasião. Do dia a dia aos momentos especiais, damos vida à sua inspiração com estilo único e personalizado. Fale com a gente no WhatsApp e vamos transformar suas ideias em realidade!</p>
@@ -101,9 +112,9 @@ export default function Home () {
                 <div className="image-large">
                   <img src="./images/colagem.png" alt="" />
                 </div>
-            </div>
+            </FadeUp>
 
-            <div className="about-container">
+            <FadeUp className="about-container" delay={100}>
               <div className="image-container">
                 <img src="./images/gabriella.jpeg" alt="" />
               </div>
@@ -111,7 +122,7 @@ export default function Home () {
                 <h1>O coração do crochê, <br /><span>Gabriella</span></h1>
                 <p>O crochê sempre fez parte de mim. Desde pequena, me encantava com os fios se transformando em algo único, e essa paixão só cresceu com o tempo. Hoje, aos 19 anos, cada peça que crio carrega um pouco da minha dedicação e do amor que sinto por essa arte. <br/><br />Para mim, o crochê vai além da beleza, é sobre conforto, estilo e aquela sensação especial de vestir algo feito à mão, pensado para você. Cada ponto, cada detalhe, é uma forma de expressar cuidado e tornar cada acessório ainda mais especial. 💖</p>
               </div>
-            </div>
+            </FadeUp>
           </main>
       </div>
     );

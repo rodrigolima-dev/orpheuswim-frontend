@@ -81,7 +81,7 @@ export default function Navigation() {
       <div className="nav-container">
         <ul className="search-menu">
           <li className="menu-item">
-            <img src={logoSrc} alt="Logo Orpheuswim" />
+            <img src={logoSrc} alt="Logo Orpheuswim" onClick={() => navigate("/")}/>
           </li>
           <li className="menu-item">
             <Link to="/" onClick={() => { setIsSidebarOpen(false); }}>HOME</Link>

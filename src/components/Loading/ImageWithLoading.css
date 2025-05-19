@@ -1,9 +1,9 @@
-.image-wrapper {
-  position: relative;
-  width: 100%;
-  height: 36rem;
-  border-radius: 5px;
-  overflow: hidden;
+.spinner-wrapper {
+  height: 800px;
+}
+
+.spinner-wrapper img {
+  height: 100%;
 }
 
 /* Imagem some ao carregar */
