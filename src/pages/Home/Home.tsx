@@ -16,7 +16,9 @@ import FadeUp from "../../components/FadeUp/FadeUp";
 
 
 export default function Home () {
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([
+
+    ])
     const navigate = useNavigate();
     
 

@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import { useSearchParams } from "react-router-dom";
 import Card from "../../components/Card/Card";
 import { getProducts } from "../../services/apiConnect";
@@ -27,10 +29,13 @@ export default function Products() {
     <div className="main-container">
       <div className="title-container">
         <h1>
-          Você está procurando por{" "}
+          Você está procurando por {" "}
           <span>{category ? category : "todos os produtos"}</span>
+         
         </h1>
       </div>
+
+       <hr />
 
       {products.length > 0 && ( // só renderiza se tiver produtos
         <div className="product-grid">
@@ -41,6 +46,8 @@ export default function Products() {
               title={product.title}
               description={product.description}
               price={product.price}
+              data-aos="fade-up"
+              data-aos-delay="100"
             />
           ))}
         </div>
