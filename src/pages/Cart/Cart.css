@@ -32,9 +32,9 @@
   }
   
   .cart-title {
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-bottom: 1.5rem;
-    font-weight: 500;
+    font-weight: 300;
     text-align: center;
     color: #555;
   }
@@ -267,6 +267,10 @@
       flex-direction: column;
       align-items: flex-start;
     }
+
+    .cart-title { 
+      font-size: 2rem;
+    }
   
     .cart-item img {
       width: 100%;
@@ -280,7 +284,6 @@
 
     .buttons-container {
       display: flex;
-      justify-content: space-between;
 
     }
     
