@@ -1,4 +1,10 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import {
+  calculateCartTotal,
+  getCartItemKey,
+  normalizeStoredCart,
+  removeCartItem as removeCartItemFromList,
+} from '../domain/cart';
 
 // Tipo do produto no carrinho
 type CartItem = {
@@ -19,6 +25,7 @@ type CartContextType = {
   clearCart: () => void;
   totalItems: number;
   totalQuantity: number;
+  totalPrice: number;
   updateQuantity: (id: number, size: string, color: string, quantity: number) => void;
 };
 
@@ -36,7 +43,7 @@ export const useCart = () => {
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
     const storedCart = localStorage.getItem('cart');
-    return storedCart ? JSON.parse(storedCart) : [];
+    return normalizeStoredCart(storedCart ?? '[]') as CartItem[];
   });
 
   // Salvar o carrinho no localStorage sempre que mudar
@@ -47,15 +54,15 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const addToCart = (newItem: CartItem) => {
     setCart((prevCart) => {
       const index = prevCart.findIndex(
-        (item) =>
-          item.id === newItem.id &&
-          item.size === newItem.size &&
-          item.color === newItem.color
+        (item) => getCartItemKey(item) === getCartItemKey(newItem)
       );
 
       if (index >= 0) {
         const updatedCart = [...prevCart];
-        updatedCart[index].quantity += newItem.quantity;
+        updatedCart[index] = {
+          ...updatedCart[index],
+          quantity: updatedCart[index].quantity + newItem.quantity,
+        };
         return updatedCart;
       } else {
         return [...prevCart, newItem];
@@ -64,11 +71,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   };
 
   const removeFromCart = (id: number, size: string, color: string) => {
-    setCart((prevCart) =>
-      prevCart.filter(
-        (item) => !(item.id === id && item.size === size && item.color === color)
-      )
-    );
+    setCart((prevCart) => removeCartItemFromList(prevCart, id, size, color));
   };
 
   const clearCart = () => {
@@ -78,7 +81,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
   const updateQuantity = (id: number, size: string, color: string, quantity: number) => {
     setCart((prevCart) =>
       prevCart.map((item) =>
-        item.id === id && item.size === size && item.color === color
+        getCartItemKey(item) === getCartItemKey(id, size, color)
           ? { ...item, quantity: Math.max(1, quantity) }
           : item
       )
@@ -87,6 +90,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
   const totalItems = cart.length;
   const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const totalPrice = calculateCartTotal(cart);
 
   return (
     <CartContext.Provider
@@ -98,6 +102,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
         updateQuantity,
         totalItems,
         totalQuantity,
+        totalPrice,
       }}
     >
       {children}

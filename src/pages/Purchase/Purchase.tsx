@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate, useNavigation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import "./Purchase.css"
 import Dropdown from "../../components/Dropdown/Dropdown";
@@ -29,6 +29,25 @@ export default function Purchase() {
             once: true, // garante que a animação ocorra uma única vez
         });
     }, []);
+
+    const hasProductDetails = Boolean(
+        location.state &&
+        (typeof location.state.id === "number" || typeof location.state.id === "string") &&
+        typeof location.state.title === "string" &&
+        typeof location.state.price === "number"
+    );
+
+    if (!hasProductDetails) {
+        return (
+            <div className="purchase-missing">
+                <h1>Produto indisponível</h1>
+                <p>Abra uma peça pelo catálogo para escolher tamanho e cor.</p>
+                <button type="button" onClick={() => navigate('/products')}>
+                    Voltar ao catálogo
+                </button>
+            </div>
+        );
+    }
 
 
     //Função para adcionar ao carrinho
@@ -69,7 +88,7 @@ export default function Purchase() {
 
             <div className="product-info-container" data-aos="fade-up" data-aos-delay="300">
                 <div className="title-container">
-                    <img src="/images/logo-site.png" alt="Logo orpheuswim" className="logo-orp"/>
+                    <span className="catalog-logo">CATÁLOGO ARTESANAL</span>
                     <h1>{title}</h1>
                     <span>R${price.toFixed(2)}</span>
                 </div>

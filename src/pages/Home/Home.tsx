@@ -8,7 +8,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import { Navigation, Pagination } from 'swiper/modules';
 import { useNavigate } from "react-router-dom";
-import { getReleases } from '../../services/apiConnect';
+import { getReleases, isDemoMode } from '../../services/apiConnect';
 import { FaWhatsapp } from "react-icons/fa";
 import FadeUp from "../../components/FadeUp/FadeUp";
 
@@ -105,9 +105,11 @@ export default function Home () {
                       Saiba mais
                     </button>
 
-                    <a href="https://wa.me/5521983103439" target="_blank">
-                        <FaWhatsapp className="contact-icon-home" color="#555" size={35}/>
-                    </a>
+                    {!isDemoMode && (
+                      <a href="https://wa.me/5521983103439" target="_blank" rel="noreferrer">
+                          <FaWhatsapp className="contact-icon-home" color="#555" size={35}/>
+                      </a>
+                    )}
                   </div>
                 </div>
 
@@ -118,11 +120,11 @@ export default function Home () {
 
             <FadeUp className="about-container" delay={100}>
               <div className="image-container">
-                <img src="./images/gabriella.jpeg" alt="" />
+                <img src="./images/colagem.png" alt="Coleção de peças artesanais" />
               </div>
               <div className="text-container">
-                <h1>O coração do crochê, <br /><span>Gabriella</span></h1>
-                <p>O crochê sempre fez parte de mim. Desde pequena, me encantava com os fios se transformando em algo único, e essa paixão só cresceu com o tempo. Hoje, aos 19 anos, cada peça que crio carrega um pouco da minha dedicação e do amor que sinto por essa arte. <br/><br />Para mim, o crochê vai além da beleza, é sobre conforto, estilo e aquela sensação especial de vestir algo feito à mão, pensado para você. Cada ponto, cada detalhe, é uma forma de expressar cuidado e tornar cada acessório ainda mais especial. 💖</p>
+                <h1>Feito à mão, <br /><span>pensado para você</span></h1>
+                <p>Cada peça combina cuidado artesanal, conforto e estilo para acompanhar momentos especiais. Explore o catálogo, escolha suas variações e prepare uma solicitação personalizada.</p>
               </div>
             </FadeUp>
           </main>
