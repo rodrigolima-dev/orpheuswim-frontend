@@ -1,43 +1,36 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { buildWhatsAppMessage, buildWhatsAppUrl, getCartItemKey } from "../../domain/cart";
+import { isDemoMode } from "../../services/apiConnect";
 import "./Cart.css";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { cart, removeFromCart, clearCart, updateQuantity } = useCart();
+  const { cart, removeFromCart, clearCart, updateQuantity, totalPrice } = useCart();
   const [imageLoaded, setImageLoaded] = useState(false);
-  
+  const [showPreview, setShowPreview] = useState(false);
+  const [copyStatus, setCopyStatus] = useState("");
 
-  const totalPrice = cart.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0
-  );
-
-  function generateWhatsAppMessage() {
-    let message = "Olá, quero finalizar uma compra com os seguintes produtos:%0A%0A";
-  
-    cart.forEach((item, index) => {
-      message += `*Produto ${index + 1}:* ${item.title}%0A`;
-      message += `Tamanho: ${item.size}%0A`;
-      message += `Cor: ${item.color}%0A`;
-      message += `Quantidade: ${item.quantity}%0A`;
-      message += `Preço unitário: R$ ${item.price.toFixed(2)}%0A%0A`;
-    });
-  
-    const total = cart.reduce((total, item) => total + item.price * item.quantity, 0);
-    message += `*Total:* R$ ${total.toFixed(2)}%0A%0A`;
-  
-    message += "Aguardo a confirmação!";
-  
-    return message;
-  }
+  const whatsappMessage = buildWhatsAppMessage(cart);
 
   function handleWhatsAppCheckout() {
-    const message = generateWhatsAppMessage();
+    if (isDemoMode) return;
+
     const phone = "5521983103439"; 
 
-    const whatsappUrl = `https://wa.me/${phone}?text=${message}`;
+    const whatsappUrl = buildWhatsAppUrl(phone, whatsappMessage);
     window.open(whatsappUrl, "_blank");
+    clearCart();
+    setShowPreview(false);
+  }
+
+  async function handleCopyMessage() {
+    try {
+      await navigator.clipboard.writeText(whatsappMessage);
+      setCopyStatus("Mensagem copiada.");
+    } catch {
+      setCopyStatus("Não foi possível copiar automaticamente.");
+    }
   }
 
    // Função chamada quando a imagem termina de carregar
@@ -60,7 +53,7 @@ export default function Cart() {
             {cart.map((item) => (
               <div
                 className="cart-item"
-                key={`${item.id}-${item.size}-${item.color}`}
+                key={getCartItemKey(item)}
               >
               <div className="image-wrapper">
                {!imageLoaded && <div className="spinner"></div>}
@@ -115,14 +108,36 @@ export default function Cart() {
                 Limpar Carrinho
               </button>
 
-              <button  className="checkout-btn"  onClick={() => {
-                handleWhatsAppCheckout();
-                clearCart();
-                }}>
-                <p>Finalizar Compra</p>
+              <button className="checkout-btn" onClick={() => setShowPreview(true)}>
+                <p>Pré-visualizar mensagem</p>
               </button>
             </div>
           </div>
+
+          {showPreview && (
+            <div className="message-preview-overlay" role="presentation" onClick={() => setShowPreview(false)}>
+              <div
+                className="message-preview-box"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="message-preview-title"
+                onClick={(event) => event.stopPropagation()}
+              >
+                <h3 id="message-preview-title">Prévia da solicitação</h3>
+                <p>Confira o texto antes de abrir o WhatsApp.</p>
+                {isDemoMode && <p role="status">O encaminhamento está desativado no modo demo local.</p>}
+                <pre>{whatsappMessage}</pre>
+                {copyStatus && <p role="status">{copyStatus}</p>}
+                <div className="preview-actions">
+                  <button type="button" onClick={handleCopyMessage}>Copiar mensagem</button>
+                  {!isDemoMode && (
+                    <button type="button" onClick={handleWhatsAppCheckout}>Continuar para o WhatsApp</button>
+                  )}
+                  <button type="button" onClick={() => setShowPreview(false)}>Fechar</button>
+                </div>
+              </div>
+            </div>
+          )}
         </>
       )}
     </div>

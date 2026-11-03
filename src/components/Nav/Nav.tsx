@@ -6,7 +6,7 @@ import { useCart } from "../../context/CartContext";
 import './Nav.css';
 
 export default function Navigation() {
-  const logoDefault = "/images/logo-site.png";
+  const logoDefault = "/images/logo.png";
   const logoWhite = "/images/logo-white.png";
 
   const location = useLocation();
@@ -81,7 +81,7 @@ export default function Navigation() {
       <div className="nav-container">
         <ul className="search-menu">
           <li className="menu-item">
-            <img src={logoSrc} alt="Logo Orpheuswim" onClick={() => navigate("/")}/>
+            <img src={logoSrc} alt="Logo do catálogo artesanal" onClick={() => navigate("/")}/>
           </li>
           <li className="menu-item">
             <Link to="/" onClick={() => { setIsSidebarOpen(false); }}>HOME</Link>

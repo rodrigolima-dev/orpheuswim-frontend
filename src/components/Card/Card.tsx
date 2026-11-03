@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import './Card.css';
 import { useNavigate } from "react-router-dom";
 import ImageWithLoading from "../Loading/ImageWithLoading";
+import { getProductSlug } from "../../domain/product";
 
 export default function Card({id, imageUrl, title, description, price}) {
     const navigation = useNavigate();
 
     // Sem espaços
-    const formattedTitle = title.replace(/\s+/g, "-").toLowerCase();
+    const formattedTitle = getProductSlug(title);
 
     return (
         <div

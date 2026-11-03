@@ -1,12 +1,17 @@
-# 🧶 Orpheuswim - Frontend
+# Catálogo artesanal — frontend
 
-Interface web desenvolvida em **React + Vite** para a loja de crochê Orpheuswim. Este projeto consome a API REST do backend e oferece uma experiência de navegação fluida, responsiva e moderna para os usuários.
+Interface web desenvolvida em **React + Vite** para um e-commerce de catálogo artesanal. O frontend consome uma API REST separada e oferece catálogo, variações, carrinho local e uma solicitação preparada para WhatsApp.
 
-## 🌐 Deploy
+## Demonstração local
 
-A aplicação está disponível em produção:
+O modo demo usa uma fixture fictícia, não chama a API nem abre o WhatsApp automaticamente.
 
-👉 [orpheuswim.store](https://orpheuswim.store)
+```bash
+npm install
+npm run demo
+```
+
+Para usar a API local, execute `npm run dev` e configure `VITE_API_URL` em um arquivo `.env` sem versionar.
 
 ---
 
@@ -15,7 +20,6 @@ A aplicação está disponível em produção:
 - [React](https://reactjs.org/)
 - [Vite](https://vitejs.dev/)
 - [TypeScript](https://www.typescriptlang.org/)
-- [Tailwind CSS](https://tailwindcss.com/)
 - [React Router](https://reactrouter.com/)
 - [Axios](https://axios-http.com/)
 - [Vercel](https://vercel.com/) — deploy contínuo
@@ -25,7 +29,7 @@ A aplicação está disponível em produção:
 
 ## 📦 Funcionalidades
 
-- ✅ **Listagem de produtos** com filtros por categoria e busca
+- ✅ **Listagem de produtos** com filtros por categoria
 - ✅ **Visualização de lançamentos** (últimos produtos adicionados)
 - ✅ **Página de detalhes** de cada produto
 - ✅ **Carrinho de compras** com controle de quantidade e cálculo de total
@@ -33,6 +37,7 @@ A aplicação está disponível em produção:
 - ✅ Cadastro, edição e exclusão de produtos (admin)
 - ✅ Design **responsivo**
 - ✅ Integração com a **API REST** do backend
+- ✅ Prévia local da mensagem antes do encaminhamento opcional para WhatsApp
 
 ---
 
@@ -55,11 +60,8 @@ A aplicação está disponível em produção:
 ### Passos
 
 ```bash
-# Clone o repositório
-git clone https://github.com/rodrigolima-dev/orpheuswim-frontend
-
-# Acesse a pasta do projeto
-cd orpheuswim-frontend
+# Acesse a pasta da cópia local do frontend
+cd <pasta-do-frontend>
 
 # Instale as dependências
 npm install
