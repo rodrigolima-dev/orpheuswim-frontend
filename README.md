@@ -2,12 +2,6 @@
 
 Interface web desenvolvida em **React + Vite** para a loja de crochê Orpheuswim. Este projeto consome a API REST do backend e oferece uma experiência de navegação fluida, responsiva e moderna para os usuários.
 
-## 🌐 Deploy
-
-A aplicação está disponível em produção:
-
-👉 [orpheuswim.store](https://orpheuswim.store)
-
 ---
 
 ## 🚀 Tecnologias Utilizadas
